@@ -38,17 +38,46 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    let inventorsFrom1500 = inventors.filter(inventor => inventor.year > 1499 && inventor.year < 1600);
 
+    console.log(inventorsFrom1500);
+    
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    let inventorsFullName = inventors.map(inventor => ({
+      fullName: `${inventor.first} ${inventor.last}`,
+    }));    
+
+    console.log(inventorsFullName);
+    
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    let inventorsBornSorted = inventors.sort((a, b) => b.year - a.year)
+
+    console.log(inventorsBornSorted);
+
+
+        //first I did a variable to take the age easiest
+    let inventorsAge = inventors.map(inventor => ({
+      age: `${inventor.passed}` - `${inventor.year}`
+    }))
+
+    console.log(inventorsAge);
+    
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+        let allInventorsAges = inventorsAge.reduce((prev, inventor) => prev + inventor.age, 0)
+    
+    console.log(allInventorsAges);
+
 
     // 5. Sort the inventors by years lived
+    let inventorsAgeSorted = inventors.sort((a, b) => a.age - b.age)
+
+    console.log(inventorsAgeSorted);
+    
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -56,10 +85,21 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    let LastNameSorted = people.sort((lastPerson, nextPerson)=> {
+      const [aLastName, aFirstName] = lastPerson.split(', ');
+      const [bLastName, bFirstName] = nextPerson.split(', ')
+      return aLastName > bLastName ? 1 : -1
+    })
+
+    console.log(LastNameSorted);
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    
+
 
   </script>
 </body>
